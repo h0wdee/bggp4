@@ -1,0 +1,13 @@
+## general jni info:
+https://developer.android.com/ndk/guides/concepts
+https://developer.android.com/ndk/samples/sample_hellojni
+https://stuff.mit.edu/afs/sipb/project/android/docs/training/articles/perf-jni.html
+https://github.com/android/ndk/wiki/JNI
+
+## arm + android jni:
+https://amccormack.net/2012-11-03-getting-started-arm-assembly-for-android.html
+https://community.arm.com/support-forums/f/operating-systems-forum/47170/how-to-run-arm-assembly-on-android
+
+the best:
+https://community.arm.com/arm-community-blogs/b/architectures-and-processors-blog/posts/calling-java-methods-through-native-arm-assembly-code-with-an-android-app-and-the-jni
+https://community.arm.com/arm-community-blogs/b/architectures-and-processors-blog/posts/calling-native-methods-written-in-arm-assembly-within-an-android-app-using-the-jni

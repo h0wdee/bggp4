@@ -1,0 +1,5 @@
+#!/usr/bin/bash
+
+for png in *.png; do
+	cwebp -quiet -q 100 $png -o ${png%.png}.webp
+done
