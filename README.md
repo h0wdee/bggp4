@@ -58,7 +58,7 @@ The command given in the tutorial for rezipping the APK (an APK is just a zip af
 zip -r app app.zip
 ```
 This wasn't working for me. You can see exactly what zip command I ended up using in the [`builder`](https://github.com/h0wdee/bggp4/blob/b6fe99903491e4671a5f932913d6bb802c3db821/builder#L13C1-L13C1), 
-but to put the template for my command is this:
+but the template for my command is this:
 ```
 zip -X app-unsigned.apk <every> <file> <u> <need> <to> <zip>
 ```
@@ -77,20 +77,55 @@ You can set this up by running `sdkmanager` with whatever platform you want to i
 sdkmanager "platforms;android-18"
 ```
 
-These were the largest road blocks I came across while messing with golfing the APK, from there I just had to 
-figure out how I was going to make it replicate itself.
+The topic of versioning extends past just the SDK's build-tools. Older versions also allowed smaller / less 
+dependencies, and therefore less imports. 
+
+This was also important to keep in mind as I actually wrote the APK, the more I could depend on just `android` 
+libraries, and not `androidx` (which would require kotlin dependencies), the smaller the resulting APK would be.
+
+Now I just had to figure out how I was going to make it replicate itself and write it.
 
 ### Writing Java for APK Self Replication
+Regardless of what method I chose to write a self replicating APK, I was going to have to get read/write 
+[permissions](https://developer.android.com/guide/components/intents-filters). 
+This is the part where things really started to slow down, and I started running short on time, 
+so I just had to find a solution. After fiddling a lot with figuring out if I could write to memory with just a 
+generic [Document Provider](https://developer.android.com/guide/topics/providers/create-document-provider), 
+I decided to tryout a snippet of code I had found that used a [FileProvider](https://developer.android.com/reference/androidx/core/content/FileProvider). 
 
 
+What was interesting about this method, is that I realized I didn't have to request permission at all. The current
+app doesn't prompt for any user input, however, I would be shocked if it were to ever make it onto the app store.
+lol
+The downside of this method is that FileProvider is and androidx class. I removed a number of lines of code,
+but no matter what I did, as long as I depended on something from androidx, a slew of dependecies would be added.
+Frankly, this is where I got bored, and tired of messing around with Java, and reading through what was allowed 
+in old Android SDK versions. I'm sure I'll pick it up again, but not today.
 
 
+With this boredom, however, came a different thought, how could I bypass all these dependencies entirely, you may
+have already thought of the answer: the Java Native Interface (JNI). What if I wrote a native library that 
+replicates the APK? I'm still not totally sure what the overhead will be now that the NDK (Native Development Kit)
+is going to be a dependency, but regardless, I thought it would be a fun and welcome challenge, not to mention,
+I could golf some other files along the way.
 
 
+If I'm going to write an Android Library, I'm going to do it write though... in ARM lol
+So check back here in a month or so for updates. (I'm in the process of going through the Azeria Labs tutorials now
+, and also bought here book).
+---
+So quick road map of what I'm going to be working in order:
+- Write a self replicating ELF in ARM
+- Write a self replicating Android Library (just a .so file that when called replicates itself).
+- Write a self replicating APK that calls a native method written in ARM to do so.
 
 
-
-
-
-
-
+# Links
+[BGGP4](https://binary.golf/)
+[APKGolf](https://github.com/fractalwrench/ApkGolf/blob/master/blog/BLOG_POST.md)
+[Android Docs](https://developer.android.com/reference)
+[Android Internals](https://newandroidbook.com/AIvI-M-RL1.pdf)
+[Azeria Labs](https://azeria-labs.com/writing-arm-assembly-part-1/)
+[ARM Assembly Interals & Reverse Engineering](https://www.amazon.com/Blue-Fox-Assembly-Internals-Engineering-ebook/dp/B0C2B5SLYM)
+[Calling native methods, written in ARM Assembly, within an Android App using the JNI](https://community.arm.com/arm-community-blogs/b/architectures-and-processors-blog/posts/calling-native-methods-written-in-arm-assembly-within-an-android-app-using-the-jni)
+[Assemble a native ARMv8 library, and call Android Java methods from its procedures invoked by an Android App, using the JNI conventions](https://community.arm.com/support-forums/f/operating-systems-forum/9524/assemble-a-native-armv8-library-and-call-android-java-methods-from-its-procedures-invoked-by-an-android-app-using-the-jni-conventions)
