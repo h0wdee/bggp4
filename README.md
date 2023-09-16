@@ -113,7 +113,9 @@ I could golf some other files along the way.
 If I'm going to write an Android Library, I'm going to do it write though... in ARM lol
 So check back here in a month or so for updates. (I'm in the process of going through the Azeria Labs tutorials now
 , and also bought here book).
+
 ---
+
 So quick road map of what I'm going to be working in order:
 - Write a self replicating ELF in ARM
 - Write a self replicating Android Library (just a .so file that when called replicates itself).
@@ -121,11 +123,11 @@ So quick road map of what I'm going to be working in order:
 
 
 # Links
-[BGGP4](https://binary.golf/)
-[APKGolf](https://github.com/fractalwrench/ApkGolf/blob/master/blog/BLOG_POST.md)
-[Android Docs](https://developer.android.com/reference)
-[Android Internals](https://newandroidbook.com/AIvI-M-RL1.pdf)
-[Azeria Labs](https://azeria-labs.com/writing-arm-assembly-part-1/)
-[ARM Assembly Interals & Reverse Engineering](https://www.amazon.com/Blue-Fox-Assembly-Internals-Engineering-ebook/dp/B0C2B5SLYM)
-[Calling native methods, written in ARM Assembly, within an Android App using the JNI](https://community.arm.com/arm-community-blogs/b/architectures-and-processors-blog/posts/calling-native-methods-written-in-arm-assembly-within-an-android-app-using-the-jni)
-[Assemble a native ARMv8 library, and call Android Java methods from its procedures invoked by an Android App, using the JNI conventions](https://community.arm.com/support-forums/f/operating-systems-forum/9524/assemble-a-native-armv8-library-and-call-android-java-methods-from-its-procedures-invoked-by-an-android-app-using-the-jni-conventions)
+* [BGGP4](https://binary.golf/)
+* [APKGolf](https://github.com/fractalwrench/ApkGolf/blob/master/blog/BLOG_POST.md)
+* [Android Docs](https://developer.android.com/reference)
+* [Android Internals](https://newandroidbook.com/AIvI-M-RL1.pdf)
+* [Azeria Labs](https://azeria-labs.com/writing-arm-assembly-part-1/)
+* [ARM Assembly Interals & Reverse Engineering](https://www.amazon.com/Blue-Fox-Assembly-Internals-Engineering-ebook/dp/B0C2B5SLYM)
+* [Calling native methods, written in ARM Assembly, within an Android App using the JNI](https://community.arm.com/arm-community-blogs/b/architectures-and-processors-blog/posts/calling-native-methods-written-in-arm-assembly-within-an-android-app-using-the-jni)
+* [Assemble a native ARMv8 library, and call Android Java methods from its procedures invoked by an Android App, using the JNI conventions](https://community.arm.com/support-forums/f/operating-systems-forum/9524/assemble-a-native-armv8-library-and-call-android-java-methods-from-its-procedures-invoked-by-an-android-app-using-the-jni-conventions)
