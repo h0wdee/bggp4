@@ -18,7 +18,7 @@ Requirements:
 For the uninitiated, this challenge is in the tradition of binary golf / [code golf](https://en.wikipedia.org/wiki/Code_golf).
 Without getting too heady, I will just say: it's the challenge of trying to make the smallest program possible for doing a thing.
 The "thing" for the program to do in this prompt is to "replicate itself." 
-Self replicating programs are also known as <a href="https://en.wikipedia.org/wiki/Quine_(computing)" target="_#">quines</a> in computer science. 
+Self replicating programs are also known as <a href="https://en.wikipedia.org/wiki/Quine_(computing)" target="_blank">quines</a> in computer science. 
 
 In this case, we are given an example written in the programming language `bash`:
 
