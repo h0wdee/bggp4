@@ -18,7 +18,7 @@ Requirements:
 For the uninitiated, this challenge is in the tradition of binary golf / [code golf](https://en.wikipedia.org/wiki/Code_golf).
 Without getting too heady, I will just say: it's the challenge of trying to make the smallest program possible for doing a thing.
 The "thing" for the program to do in this prompt is to "replicate itself." 
-Self replicating programs are also known as <a href="https://en.wikipedia.org/wiki/Quine_(computing)" target="_blank">quines</a> in computer science. 
+Self replicating programs are also known as [quines](https://en.wikipedia.org/wiki/Quine_(computing)) in computer science. 
 
 In this case, we are given an example written in the programming language `bash`:
 
@@ -33,12 +33,54 @@ The above example is a perfectly valid submission for BGGP4, and it's only 4 byt
 ## APK Golf
 Fortunately for me, the path of APK Golfing has been walked before. 
 Other traveller's journeys have been recorded in [this](https://github.com/fractalwrench/ApkGolf) repository.
-From the looks of it, the smallest APK to date is a mere 678 bytes. Given my prompt, and the need for code 
-in order to replicate code, I will likely exceed this number.
+From the looks of it, the smallest APK to date is a mere 678 bytes. Given my prompt, and the need for a self
+replicating snippet of code, I will likely exceed this number.
 
 A h0wdy can dream though.
 
+So now that I have a road map of a bunch of methods to golf the actual APK, there are a couple tasks todo:
+	1. Decide on a method to replicated an apk. For this I had two thoughts:
+		- Make a system call and copy itself to memory.
+		- Download itself.
+	2. Write and golf that code.
+	3. Apply methods in aforementioned article to golf the actual APK. 
 
+I chose to start with step 3. I wanted to make sure I could actually golf an APK before I went ahead and wrote 
+some java code. I ran into a couple bumps along the way, and I'll clear those up now for those who also dare to 
+venture this way.
+
+### Trouble Shooting Golfing an APK
+First thing I ran into was unpacking then rezipping the APK was not rendering the same results as the ones in the 
+tutorial (I was using Ubuntu 20).
+
+The command given in the tutorial for rezipping the APK (an APK is just a zip after all) is as follows:
+```
+zip -r app app.zip
+```
+This wasn't working for me. You can see exactly what zip command I ended up using in the [`builder`](https://github.com/h0wdee/bggp4/blob/b6fe99903491e4671a5f932913d6bb802c3db821/builder#L13C1-L13C1), 
+but to put the template for my command is this:
+```
+zip -X app-unsigned.apk <every> <file> <u> <need> <to> <zip>
+```
+---
+
+The second problem I had in this phase is notable, because it also brought to mind a very important aspect of 
+APK golf: versioning. The size of the generated APK varies greatly depending on SDK version, and generally, 
+I found that older versions were much more permissive, and also generated smaller APKs. 
+
+
+For the longest time I was generating signed APKs with a later SDK and was so confused, turns out if I wanted a 
+smaller APK, I was going to need to use 26 or lower. I never investigated beyond this, but I'm still really 
+curious as to what they changed in later versions. 
+You can set this up by running `sdkmanager` with whatever platform you want to install like:
+```
+sdkmanager "platforms;android-18"
+```
+
+These were the largest road blocks I came across while messing with golfing the APK, from there I just had to 
+figure out how I was going to make it replicate itself.
+
+### Writing Java for APK Self Replication
 
 
 
